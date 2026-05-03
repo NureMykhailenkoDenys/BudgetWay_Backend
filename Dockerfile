@@ -1,17 +1,16 @@
-# 1. Stage: Build
+# Stage 1: Build
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 COPY *.sln ./
-COPY BudgetWay.Backend/*.csproj ./BudgetWay.Backend/
+COPY *.csproj ./
 RUN dotnet restore
 
-COPY BudgetWay.Backend/. ./BudgetWay.Backend/
+COPY . ./
 
-WORKDIR /src/BudgetWay.Backend
 RUN dotnet publish -c Release -o /app
 
-# 2. Stage: Runtime
+# Stage 2: Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build /app .
