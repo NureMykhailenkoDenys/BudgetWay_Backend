@@ -40,6 +40,16 @@ namespace BudgetWay.Backend
 
             builder.Services.AddAuthorization();
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("LocalhostOnly", policy =>
+                {
+                    policy.SetIsOriginAllowed(origin => origin.StartsWith("http://localhost"))
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
+
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(options =>
             {
@@ -80,6 +90,7 @@ namespace BudgetWay.Backend
 
             app.UseHttpsRedirection();
 
+            app.UseCors("LocalhostOnly");
             app.UseAuthentication();
             app.UseAuthorization();
 
