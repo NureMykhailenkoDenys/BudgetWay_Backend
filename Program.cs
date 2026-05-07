@@ -18,6 +18,10 @@ namespace BudgetWay.Backend
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddScoped<AuthService>();
+            builder.Services.AddScoped<CarService>();
+            builder.Services.AddScoped<TripService>();
+            builder.Services.AddScoped<UserService>();
+            builder.Services.AddScoped<DashboardService>();
             builder.Services.AddScoped<JwtService>();
 
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

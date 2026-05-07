@@ -9,4 +9,7 @@ public class User
 
     public string FirstName { get; set; } = string.Empty;
     public string LastName { get; set; } = string.Empty;
+
+    public ICollection<Car> Cars { get; set; } = new List<Car>();
+    public ICollection<Trip> Trips { get; set; } = new List<Trip>();
 }
