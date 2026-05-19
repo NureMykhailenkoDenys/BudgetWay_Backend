@@ -26,6 +26,7 @@ public class DashboardService
             {
                 Id = t.Id,
                 Name = t.Name,
+                DistanceKm = t.DistanceKm,
                 TotalCost = t.TotalCost,
                 CreatedAt = t.CreatedAt
             })

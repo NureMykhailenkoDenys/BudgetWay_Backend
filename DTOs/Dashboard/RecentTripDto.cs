@@ -6,6 +6,8 @@ public class RecentTripDto
 
     public string Name { get; set; } = string.Empty;
 
+    public double DistanceKm { get; set; }
+
     public double TotalCost { get; set; }
 
     public DateTime CreatedAt { get; set; }
